@@ -1,0 +1,11 @@
+[Unit]
+Description=Check MF800H cellular modem discovery after boot and firmware resets
+
+[Timer]
+OnBootSec=45s
+OnUnitInactiveSec=30s
+AccuracySec=5s
+Unit=openstick-cellular-recovery.service
+
+[Install]
+WantedBy=timers.target

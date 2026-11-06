@@ -1,0 +1,20 @@
+[Unit]
+Description=Recover lost MF800H modem discovery (carrier independent)
+Documentation=file:/usr/local/share/openstick-cellular/README.md
+After=ModemManager.service NetworkManager.service
+ConditionPathExists=/dev/wwan0qmi0
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /usr/local/lib/openstick-cellular/cellular_recovery.py
+TimeoutStartSec=100
+User=root
+Group=root
+RuntimeDirectory=openstick-cellular-recovery
+RuntimeDirectoryMode=0700
+RuntimeDirectoryPreserve=yes
+UMask=0077
+NoNewPrivileges=yes
+ProtectHome=yes
+ProtectSystem=strict
+ReadWritePaths=/run/openstick-cellular-recovery
